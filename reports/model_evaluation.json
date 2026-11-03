@@ -1,0 +1,408 @@
+{
+  "generated_at": "2026-11-03T13:05:40.454753",
+  "model_a_delay": {
+    "model_name": "delay_prediction_pipeline",
+    "algorithm": "logistic_regression",
+    "features": [
+      "distance_km",
+      "planned_duration_hours",
+      "traffic_index",
+      "customs_delay_hours",
+      "transport_mode",
+      "weather_condition",
+      "carrier_id",
+      "supplier_id",
+      "product_category"
+    ],
+    "numeric_features": [
+      "distance_km",
+      "planned_duration_hours",
+      "traffic_index",
+      "customs_delay_hours"
+    ],
+    "categorical_features": [
+      "transport_mode",
+      "weather_condition",
+      "carrier_id",
+      "supplier_id",
+      "product_category"
+    ],
+    "optimal_threshold": 0.5,
+    "feature_importances": {
+      "weather_condition": 0.04675,
+      "customs_delay_hours": 0.02483,
+      "traffic_index": 0.02108,
+      "carrier_id": 0.01333,
+      "transport_mode": 0.00225,
+      "distance_km": -0.00133,
+      "planned_duration_hours": -0.00192,
+      "supplier_id": -0.00192,
+      "product_category": -0.00358
+    },
+    "validation_comparison": {
+      "logistic_regression": {
+        "accuracy": 0.6125,
+        "precision": 0.6392,
+        "recall": 0.677,
+        "f1": 0.6576,
+        "roc_auc": 0.6575,
+        "pr_auc": 0.7098,
+        "confusion_matrix": {
+          "tn": 577,
+          "fp": 504,
+          "fn": 426,
+          "tp": 893
+        },
+        "false_positive_rate": 0.4662,
+        "false_negative_rate": 0.323,
+        "threshold": 0.5
+      },
+      "random_forest": {
+        "accuracy": 0.6112,
+        "precision": 0.6337,
+        "recall": 0.6937,
+        "f1": 0.6623,
+        "roc_auc": 0.6507,
+        "pr_auc": 0.7012,
+        "confusion_matrix": {
+          "tn": 552,
+          "fp": 529,
+          "fn": 404,
+          "tp": 915
+        },
+        "false_positive_rate": 0.4894,
+        "false_negative_rate": 0.3063,
+        "threshold": 0.5
+      },
+      "hist_gradient_boosting": {
+        "accuracy": 0.5938,
+        "precision": 0.6215,
+        "recall": 0.6672,
+        "f1": 0.6435,
+        "roc_auc": 0.6393,
+        "pr_auc": 0.6962,
+        "confusion_matrix": {
+          "tn": 545,
+          "fp": 536,
+          "fn": 439,
+          "tp": 880
+        },
+        "false_positive_rate": 0.4958,
+        "false_negative_rate": 0.3328,
+        "threshold": 0.5
+      }
+    },
+    "test_metrics": {
+      "accuracy": 0.6071,
+      "precision": 0.6336,
+      "recall": 0.6848,
+      "f1": 0.6582,
+      "roc_auc": 0.6478,
+      "pr_auc": 0.7055,
+      "confusion_matrix": {
+        "tn": 549,
+        "fp": 525,
+        "fn": 418,
+        "tp": 908
+      },
+      "false_positive_rate": 0.4888,
+      "false_negative_rate": 0.3152,
+      "threshold": 0.5
+    },
+    "trained_at": "2026-11-03T13:05:34.602253",
+    "training_samples": 11200,
+    "test_samples": 2400,
+    "pipeline_file": "models/delay_model.joblib"
+  },
+  "model_b_temperature": {
+    "model_name": "temperature_risk_pipeline",
+    "algorithm": "hist_gradient_boosting",
+    "features": [
+      "target_temperature_min_c",
+      "target_temperature_max_c",
+      "ambient_temperature_c",
+      "recorded_temperature_c",
+      "temperature_excursion_duration",
+      "sensor_gap_duration",
+      "planned_duration_hours",
+      "product_category",
+      "transport_mode",
+      "weather_condition"
+    ],
+    "numeric_features": [
+      "target_temperature_min_c",
+      "target_temperature_max_c",
+      "ambient_temperature_c",
+      "recorded_temperature_c",
+      "temperature_excursion_duration",
+      "sensor_gap_duration",
+      "planned_duration_hours"
+    ],
+    "categorical_features": [
+      "product_category",
+      "transport_mode",
+      "weather_condition"
+    ],
+    "classes": [
+      0,
+      1,
+      2
+    ],
+    "class_labels": {
+      "0": "Compliant / Safe",
+      "1": "Moderate Excursion Warning",
+      "2": "Critical Excursion / Quality Breach"
+    },
+    "feature_importances": {
+      "target_temperature_min_c": 0.16817,
+      "recorded_temperature_c": 0.12475,
+      "temperature_excursion_duration": 0.06208,
+      "weather_condition": 0.01508,
+      "ambient_temperature_c": 0.00442,
+      "planned_duration_hours": 0.00125,
+      "sensor_gap_duration": 0.00083,
+      "product_category": 0.00025,
+      "target_temperature_max_c": -0.00017,
+      "transport_mode": -0.00017
+    },
+    "validation_comparison": {
+      "multinomial_logistic_regression": {
+        "accuracy": 0.9529,
+        "macro_precision": 0.9114,
+        "macro_recall": 0.924,
+        "macro_f1": 0.9176,
+        "weighted_f1": 0.9531,
+        "confusion_matrix": [
+          [
+            1979,
+            59,
+            0
+          ],
+          [
+            50,
+            232,
+            3
+          ],
+          [
+            1,
+            0,
+            76
+          ]
+        ],
+        "class_report": {
+          "0": {
+            "precision": 0.9748768472906404,
+            "recall": 0.9710500490677134,
+            "f1-score": 0.9729596853490659,
+            "support": 2038.0
+          },
+          "1": {
+            "precision": 0.7972508591065293,
+            "recall": 0.8140350877192982,
+            "f1-score": 0.8055555555555556,
+            "support": 285.0
+          },
+          "2": {
+            "precision": 0.9620253164556962,
+            "recall": 0.987012987012987,
+            "f1-score": 0.9743589743589743,
+            "support": 77.0
+          },
+          "accuracy": 0.9529166666666666,
+          "macro avg": {
+            "precision": 0.9113843409509553,
+            "recall": 0.9240327079333328,
+            "f1-score": 0.9176247384211985,
+            "support": 2400.0
+          },
+          "weighted avg": {
+            "precision": 0.9533714412461559,
+            "recall": 0.9529166666666666,
+            "f1-score": 0.953125338791821,
+            "support": 2400.0
+          }
+        }
+      },
+      "random_forest": {
+        "accuracy": 0.9929,
+        "macro_precision": 0.9852,
+        "macro_recall": 0.9801,
+        "macro_f1": 0.9822,
+        "weighted_f1": 0.9928,
+        "confusion_matrix": [
+          [
+            2038,
+            0,
+            0
+          ],
+          [
+            14,
+            268,
+            3
+          ],
+          [
+            0,
+            0,
+            77
+          ]
+        ],
+        "class_report": {
+          "0": {
+            "precision": 0.99317738791423,
+            "recall": 1.0,
+            "f1-score": 0.9965770171149144,
+            "support": 2038.0
+          },
+          "1": {
+            "precision": 1.0,
+            "recall": 0.9403508771929825,
+            "f1-score": 0.969258589511754,
+            "support": 285.0
+          },
+          "2": {
+            "precision": 0.9625,
+            "recall": 1.0,
+            "f1-score": 0.9808917197452229,
+            "support": 77.0
+          },
+          "accuracy": 0.9929166666666667,
+          "macro avg": {
+            "precision": 0.98522579597141,
+            "recall": 0.9801169590643276,
+            "f1-score": 0.9822424421239638,
+            "support": 2400.0
+          },
+          "weighted avg": {
+            "precision": 0.9930033402371671,
+            "recall": 0.9929166666666667,
+            "f1-score": 0.9928297172130948,
+            "support": 2400.0
+          }
+        }
+      },
+      "hist_gradient_boosting": {
+        "accuracy": 0.9933,
+        "macro_precision": 0.9802,
+        "macro_recall": 0.9863,
+        "macro_f1": 0.9831,
+        "weighted_f1": 0.9933,
+        "confusion_matrix": [
+          [
+            2033,
+            5,
+            0
+          ],
+          [
+            8,
+            274,
+            3
+          ],
+          [
+            0,
+            0,
+            77
+          ]
+        ],
+        "class_report": {
+          "0": {
+            "precision": 0.9960803527682509,
+            "recall": 0.9975466143277724,
+            "f1-score": 0.9968129443491052,
+            "support": 2038.0
+          },
+          "1": {
+            "precision": 0.982078853046595,
+            "recall": 0.9614035087719298,
+            "f1-score": 0.9716312056737588,
+            "support": 285.0
+          },
+          "2": {
+            "precision": 0.9625,
+            "recall": 1.0,
+            "f1-score": 0.9808917197452229,
+            "support": 77.0
+          },
+          "accuracy": 0.9933333333333333,
+          "macro avg": {
+            "precision": 0.9802197352716152,
+            "recall": 0.9863167076999008,
+            "f1-score": 0.9831119565893623,
+            "support": 2400.0
+          },
+          "weighted avg": {
+            "precision": 0.9933403050249897,
+            "recall": 0.9933333333333333,
+            "f1-score": 0.9933118069253666,
+            "support": 2400.0
+          }
+        }
+      }
+    },
+    "test_metrics": {
+      "accuracy": 0.99,
+      "macro_precision": 0.9827,
+      "macro_recall": 0.9789,
+      "macro_f1": 0.9807,
+      "weighted_f1": 0.9899,
+      "confusion_matrix": [
+        [
+          2010,
+          6,
+          0
+        ],
+        [
+          16,
+          281,
+          2
+        ],
+        [
+          0,
+          0,
+          85
+        ]
+      ],
+      "class_report": {
+        "0": {
+          "precision": 0.9921026653504442,
+          "recall": 0.9970238095238095,
+          "f1-score": 0.9945571499257794,
+          "support": 2016.0
+        },
+        "1": {
+          "precision": 0.9790940766550522,
+          "recall": 0.939799331103679,
+          "f1-score": 0.9590443686006825,
+          "support": 299.0
+        },
+        "2": {
+          "precision": 0.9770114942528736,
+          "recall": 1.0,
+          "f1-score": 0.9883720930232558,
+          "support": 85.0
+        },
+        "accuracy": 0.99,
+        "macro avg": {
+          "precision": 0.9827360787527901,
+          "recall": 0.9789410468758296,
+          "f1-score": 0.9806578705165725,
+          "support": 2400.0
+        },
+        "weighted avg": {
+          "precision": 0.9899475330324377,
+          "recall": 0.99,
+          "f1-score": 0.9899137951537299,
+          "support": 2400.0
+        }
+      }
+    },
+    "trained_at": "2026-11-03T13:05:40.453007",
+    "training_samples": 11200,
+    "test_samples": 2400,
+    "pipeline_file": "models/temperature_risk_model.joblib"
+  },
+  "environment": {
+    "python_version": "3.12",
+    "framework": "scikit-learn",
+    "random_seed": 42
+  }
+}

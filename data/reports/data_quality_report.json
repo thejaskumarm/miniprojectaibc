@@ -1,0 +1,88 @@
+{
+  "report_generated_at": "2026-10-26T18:23:01.031572",
+  "summary": {
+    "total_raw_records": 16247,
+    "total_cleaned_records": 16000,
+    "total_rejected_records": 247,
+    "real_curated_count": 6000,
+    "real_curated_percentage": 37.5,
+    "synthetic_simulated_count": 10000,
+    "synthetic_simulated_percentage": 62.5,
+    "train_records": 11200,
+    "val_records": 2400,
+    "test_records": 2400
+  },
+  "target_distributions": {
+    "delay_risk_label": {
+      "0_on_time": 7169,
+      "1_delayed": 8831,
+      "delay_rate": 0.5519
+    },
+    "temperature_quality_risk_label": {
+      "0_normal": 13505,
+      "1_moderate_excursion": 1925,
+      "2_critical_breach": 570
+    }
+  },
+  "missing_values_pct": {
+    "shipment_id": 0.0,
+    "product_category": 0.0,
+    "transport_mode": 0.0,
+    "origin": 0.0,
+    "destination": 0.0,
+    "distance_km": 0.0,
+    "planned_dispatch_time": 0.0,
+    "planned_delivery_time": 0.0,
+    "actual_delivery_time": 0.0,
+    "carrier_id": 0.0,
+    "supplier_id": 0.0,
+    "weather_condition": 0.0,
+    "traffic_index": 0.0,
+    "customs_delay_hours": 0.0,
+    "ambient_temperature_c": 0.0,
+    "recorded_temperature_c": 0.0,
+    "target_temperature_min_c": 0.0,
+    "target_temperature_max_c": 0.0,
+    "temperature_excursion_duration": 0.0,
+    "sensor_gap_duration": 0.0,
+    "shipment_status": 0.0,
+    "delay_risk_label": 0.0,
+    "temperature_quality_risk_label": 0.0,
+    "data_provenance": 0.0,
+    "source_dataset": 0.0,
+    "created_at": 0.0,
+    "updated_at": 0.0,
+    "strat_key": 0.0
+  },
+  "features": {
+    "product_categories": {
+      "Vaccines & Biologics": 3210,
+      "Ultra-Cold Biopharma": 3062,
+      "Fresh Produce": 2470,
+      "Industrial & Electronics": 2452,
+      "Frozen Food": 2418,
+      "Ambient Pharmaceuticals": 2388
+    },
+    "transport_modes": {
+      "Air Freight": 8291,
+      "Maritime": 6852,
+      "Road Freight": 432,
+      "Intermodal Rail": 425
+    },
+    "weather_conditions": {
+      "Clear": 7960,
+      "Rain": 3222,
+      "High Heatwave": 1592,
+      "Severe Snowstorm": 1266,
+      "Tropical Storm": 1135,
+      "Fog": 825
+    },
+    "carriers": {
+      "CARRIER_DHL": 3206,
+      "CARRIER_MAERSK": 3204,
+      "CARRIER_DB_SCHENKER": 3204,
+      "CARRIER_FEDEX": 3204,
+      "CARRIER_KUEHNE_NAGEL": 3182
+    }
+  }
+}

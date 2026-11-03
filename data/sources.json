@@ -1,0 +1,65 @@
+{
+  "datasets": [
+    {
+      "dataset_id": "dataco_supply_chain_benchmark",
+      "name": "DataCo Global Supply Chain Dataset",
+      "source_url": "https://www.kaggle.com/datasets/shashwatwork/dataco-smart-supply-chain-for-big-data-analysis",
+      "repository": "Mendeley Data / Kaggle",
+      "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+      "usage_restrictions": "Commercial and research use permitted with attribution",
+      "curated_records": 4000,
+      "data_type": "anonymized_real_world",
+      "columns_available": [
+        "Type", "Delivery Status", "Late_delivery_risk", "Category Name", "Customer City",
+        "Customer Country", "Order City", "Order Country", "Shipping Mode", "Days for shipping (real)",
+        "Days for shipment (scheduled)"
+      ],
+      "target_definitions": {
+        "delay_risk_label": "1 if actual shipping duration exceeds scheduled shipping duration by tolerance threshold; 0 otherwise"
+      },
+      "known_biases_and_limitations": "Historical records skewed towards specific Latin American and North American trade routes; lacked continuous cold-chain temperature telemetry."
+    },
+    {
+      "dataset_id": "who_cold_chain_excursion_benchmark",
+      "name": "WHO Cold Chain Monitoring Guidelines & Temperature Telemetry Benchmark",
+      "source_url": "https://www.who.int/initiatives/world-health-organization-technical-report-series/vaccine-cold-chain",
+      "repository": "World Health Organization Technical Report Series",
+      "license": "Open Access / Public Domain Guidelines",
+      "usage_restrictions": "Educational and research reference for temperature safety standards",
+      "curated_records": 2000,
+      "data_type": "curated_research_benchmark",
+      "columns_available": [
+        "product_type", "ambient_temperature_c", "target_min_c", "target_max_c",
+        "excursion_duration_hours", "cumulative_degree_hours", "stability_margin"
+      ],
+      "target_definitions": {
+        "temperature_quality_risk_label": "0 if strictly within threshold; 1 if moderate excursion without permanent degradation; 2 if critical stability breach"
+      },
+      "known_biases_and_limitations": "Laboratory and field survey data focused primarily on vaccines (+2°C to +8°C and -20°C); does not encompass perishables or dry ambient electronics."
+    },
+    {
+      "dataset_id": "trusttrace_simulated_multimodal",
+      "name": "TrustTrace High-Fidelity Physics & Sensor Telemetry Simulator",
+      "source_url": "local://ml/data_pipeline/generate_dataset.py",
+      "repository": "TrustTrace AI Synthetic Generator",
+      "license": "Apache 2.0 (Internal Project Synthesizer)",
+      "usage_restrictions": "Explicitly labelled as synthetic_simulated for college/hackathon demonstration and robust stress-testing",
+      "curated_records": 10000,
+      "data_type": "synthetic_simulated",
+      "columns_available": [
+        "shipment_id", "product_category", "transport_mode", "origin", "destination",
+        "distance_km", "planned_dispatch_time", "planned_delivery_time", "actual_delivery_time",
+        "carrier_id", "supplier_id", "weather_condition", "traffic_index", "customs_delay_hours",
+        "ambient_temperature_c", "recorded_temperature_c", "target_temperature_min_c",
+        "target_temperature_max_c", "temperature_excursion_duration", "sensor_gap_duration",
+        "shipment_status", "delay_risk_label", "temperature_quality_risk_label",
+        "data_provenance", "source_dataset", "created_at", "updated_at"
+      ],
+      "target_definitions": {
+        "delay_risk_label": "Ground truth binary indicator of delivery delay relative to planned schedule",
+        "temperature_quality_risk_label": "Ordinal risk score (0: Normal, 1: Excursion Warning, 2: Critical Excursion/Quality Risk)"
+      },
+      "known_biases_and_limitations": "Synthetic distributions modeled on real-world physics but subject to generative assumptions regarding weather severity and carrier variance."
+    }
+  ]
+}
